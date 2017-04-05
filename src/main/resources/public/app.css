@@ -1,0 +1,19 @@
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: white;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+.container-fluid {
+  background-image: url("images/road.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+.index-container h1, h2 {
+  color: white;
+}
