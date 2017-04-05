@@ -15,10 +15,12 @@ public class DatabaseRule extends ExternalResource {
       con.createQuery(deleteUserQuery).executeUpdate();
       // String deleteCommentQuery = "DELETE FROM comments *;";
       // con.createQuery(deleteCommentQuery).executeUpdate();
-      // String deleteTagQuery = "DELETE FROM tags *;";
-      // con.createQuery(deleteTagQuery).executeUpdate();
+      String deleteTagQuery = "DELETE FROM tags *;";
+      con.createQuery(deleteTagQuery).executeUpdate();
       String deletePostQuery = "DELETE FROM posts *;";
       con.createQuery(deletePostQuery).executeUpdate();
+      String deleteJoinQuery = "DELETE FROM tags_posts *;";
+      con.createQuery(deleteJoinQuery).executeUpdate();
     }
   }
 }
