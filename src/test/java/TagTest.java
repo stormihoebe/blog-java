@@ -14,4 +14,15 @@ public class TagTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
+  @Test
+  public void user_instantiatesCorrectlyAsUserClass_true(){
+    User testUser = new User("Bloggerina", "Blogging Princess");
+    assertTrue(testUser instanceof User);
+  }
+
+  @Test
+  public void getName_userInstantiatesWithName_true(){
+    User testUser = new User("Bloggerina", "Blogging Princess");
+    assertEquals("Bloggerina", testUser.getName());
+  }
 }
