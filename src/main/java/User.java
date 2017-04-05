@@ -3,15 +3,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class User {
-  private int id;
-  private String name;
-  private String description;
+public abstract class User {
+  public int id;
+  public String name;
+  public String description;
+  public String type;
 
-  public User(String name, String description) {
-    this.name = name;
-    this.description = description;
-  }
+
 
   public int getId(){
     return id;
@@ -27,29 +25,13 @@ public class User {
 
   public void save() {
     try(Connection con = DB.sql2o.open()){
-      String sql = "INSERT INTO users (name, description) VALUES (:name, :description)";
+      String sql = "INSERT INTO users (name, description, type) VALUES (:name, :description, :type)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .addParameter("description", this.description)
+      .addParameter("type", this.type)
       .executeUpdate()
       .getKey();
-    }
-  }
-
-  public static List<User> all() {
-    String sql = "SELECT * FROM users";
-    try(Connection con = DB.sql2o.open()) {
-     return con.createQuery(sql).executeAndFetch(User.class);
-    }
-  }
-
-  public static User find(int id) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM users where id=:id";
-      User user = con.createQuery(sql)
-        .addParameter("id", id)
-        .executeAndFetchFirst(User.class);
-      return user;
     }
   }
 
