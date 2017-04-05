@@ -46,4 +46,28 @@ public class UserTest {
     assertEquals(true, User.all().get(1).equals(userTwo));
   }
 
+  @Test
+  public void find_returnsMerchProductWithSameId_secondMerchProduct() {
+    User userOne = new User("Bloggerina", "Blogging Princess");
+    userOne.save();
+    User userTwo = new User("Bloggerella", "Blogging Queen");
+    userTwo.save();
+    assertEquals(User.find(userOne.getId()), userOne);
+  }
+  @Test
+  public void updateDescription_changesUserDescription_true(){
+    User testUser = new User("Bloggerina", "Blogging Princess");
+    testUser.save();
+    testUser.updateDescription("Blog Queen");
+    assertEquals("Blog Queen", User.find(testUser.getId()).getDescription());
+  }
+
+  @Test
+  public void updateName_changesUserName_true(){
+    User testUser = new User("Bloggerina", "Blogging Princess");
+    testUser.save();
+    testUser.updateName("Bloggerella");
+    assertEquals("Bloggerella", User.find(testUser.getId()).getName());
+  }
+
 }

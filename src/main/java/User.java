@@ -53,6 +53,27 @@ public class User {
     }
   }
 
+  public void updateDescription(String description){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE users SET description = :description WHERE id=:id";
+      con.createQuery(sql)
+      .addParameter("description", description)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void updateName(String name){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE users SET name = :name WHERE id=:id";
+      con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+
   @Override
   public boolean equals(Object otherUser){
     if(!(otherUser instanceof User)){
