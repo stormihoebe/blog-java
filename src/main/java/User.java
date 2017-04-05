@@ -27,7 +27,7 @@ public class User {
 
   public void save() {
     try(Connection con = DB.sql2o.open()){
-      String sql = "INSERT INTO users (name, description) VALUES (:name,, :description)";
+      String sql = "INSERT INTO users (name, description) VALUES (:name, :description)";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
       .addParameter("description", this.description)
@@ -37,10 +37,9 @@ public class User {
   }
 
   public static List<User> all() {
-    String sql = "SELECT * FROM users;";
+    String sql = "SELECT * FROM users";
     try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql)
-      .executeAndFetch(User.class);
+     return con.createQuery(sql).executeAndFetch(User.class);
     }
   }
 
@@ -61,7 +60,7 @@ public class User {
     } else {
       User newUser = (User) otherUser;
       return this.getName().equals(newUser.getName()) &&
-             this.getDescription() == newUser.getDescription();
+             this.getDescription().equals(newUser.getDescription()) && this.getId() == newUser.getId();
     }
   }
 
