@@ -66,8 +66,8 @@ public class UserTest {
   public void updateName_changesUserName_true(){
     User testUser = new User("Bloggerina", "Blogging Princess");
     testUser.save();
-    testUser.updateName("Bloggerella");
-    assertEquals("Bloggerella", User.find(testUser.getId()).getName());
+    testUser.updateName("Bloggere!");
+    assertEquals("Bloggere!", User.find(testUser.getId()).getName());
   }
 
 }
