@@ -20,5 +20,24 @@ public class PostTest {
     assertTrue(testPost instanceof Post);
   }
 
+  @Test
+  public void getTitle_instantiatesCorrectly_true(){
+    Post testPost = new Post("Summer Fun", "Summer is great!", 1);
+    assertEquals("Summer Fun", testPost.getTitle());
+  }
+
+  @Test
+  public void getText_instantiatesCorrectly_true(){
+    Post testPost = new Post("Summer Fun", "Summer is great!", 1);
+    assertEquals("Summer is great!", testPost.getText());
+  }
+
+  @Test
+  public void getuserId_instantiatesCorrectly_true(){
+    Post testPost = new Post("Summer Fun", "Summer is great!", 1);
+    assertEquals(1, testPost.getUserId());
+  }
+
+
 
 }
