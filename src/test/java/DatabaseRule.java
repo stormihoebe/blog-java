@@ -17,8 +17,8 @@ public class DatabaseRule extends ExternalResource {
       // con.createQuery(deleteCommentQuery).executeUpdate();
       // String deleteTagQuery = "DELETE FROM tags *;";
       // con.createQuery(deleteTagQuery).executeUpdate();
-      // String deletePostQuery = "DELETE FROM posts *;";
-      // con.createQuery(deletePostQuery).executeUpdate();
+      String deletePostQuery = "DELETE FROM posts *;";
+      con.createQuery(deletePostQuery).executeUpdate();
     }
   }
 }
