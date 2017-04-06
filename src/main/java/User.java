@@ -14,6 +14,9 @@ public abstract class User {
   public int getId(){
     return id;
   }
+  public String getType(){
+    return type;
+  }
 
   public String getName(){
     return name;
@@ -67,4 +70,22 @@ public abstract class User {
     }
   }
 
+  public static List<User> getUsers() {
+    List<User> allUsers = new ArrayList<User>();
+
+    try(Connection con = DB.sql2o.open()) {
+      String sqlAdmin = "SELECT * FROM users WHERE type = 'admin';";
+      List<AdminUser> adminUsers = con.createQuery(sqlAdmin)
+      .throwOnMappingFailure(false)
+      .executeAndFetch(AdminUser.class);
+      allUsers.addAll(adminUsers);
+
+      String sqlBasicUser = "SELECT * FROM users WHERE type = 'basic';";
+      List<BasicUser> basicUsers = con.createQuery(sqlBasicUser)
+      .throwOnMappingFailure(false)
+      .executeAndFetch(BasicUser.class);
+      allUsers.addAll(basicUsers);
+    }
+    return allUsers;
+  }
 }

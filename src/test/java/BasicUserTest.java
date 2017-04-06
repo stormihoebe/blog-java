@@ -42,6 +42,7 @@ public class BasicUserTest {
     userOne.save();
     BasicUser userTwo = new BasicUser("Bloggerella", "Blogging Queen");
     userTwo.save();
+    System.out.println(BasicUser.all());
     assertEquals(true, BasicUser.all().get(0).equals(userOne));
     assertEquals(true, BasicUser.all().get(1).equals(userTwo));
   }
