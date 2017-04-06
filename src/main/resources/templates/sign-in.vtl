@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1>Sign In</h1>
+  <form action="/users/sign-in" method="post">
+    <div class="form-group">
+      <label for="user">Select User Name</label>
+      <select class = "form-control" id='user_id' name='user_id' type='text'>
+        #foreach($user in $users)
+          <option  value="$user.getId()">$user.getName()</option>
+        #end
+      </select>
+    </div>
+    <button type="submit" name="button" class="btn btn-info">Sign Up</button>
+  </form>
+</div>

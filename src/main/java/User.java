@@ -88,4 +88,15 @@ public abstract class User {
     }
     return allUsers;
   }
+
+  public static User find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM users where id=:id";
+      User user = con.createQuery(sql)
+        .addParameter("id", id)
+        .throwOnMappingFailure(false)
+        .executeAndFetchFirst(User.class);
+      return user;
+    }
+  }
 }
